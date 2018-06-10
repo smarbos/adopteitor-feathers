@@ -1,21 +1,16 @@
 {
   "name": "adopteitor-feathers",
-  "version": "0.0.1",
-  "description": "New Version of Adopteitor based on FeathersJS",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "serve": "http-server public/"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/smarbos/adopteitor-feathers.git"
-  },
+  "keywords": [],
   "author": "",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/smarbos/adopteitor-feathers/issues"
-  },
-  "homepage": "https://github.com/smarbos/adopteitor-feathers#readme",
+  "license": "ISC",
   "dependencies": {
     "@feathersjs/express": "^1.2.3",
     "@feathersjs/feathers": "^3.1.6"
