@@ -1,28 +1,22 @@
+'use strict';
+
 const feathers = require('@feathersjs/feathers');
 const express = require('@feathersjs/express');
-const Animals = require('./animals.js');
+const Animals = require('./endpoints/animals.js');
 const app = express(feathers());
+const mongoose = require('mongoose');
+const service = require('feathers-mongoose');
 
-// Turn on JSON body parsing for REST services
-app.use(express.json())
-// Turn on URL-encoded body parsing for REST services
-app.use(express.urlencoded({ extended: true }));
-// Set up REST transport using Express
+mongoose.Promise = global.Promise;
+// mongoose.connect('mongodb://localhost:27017/feathers');
+
 app.configure(express.rest());
 
-// Initialize the Animals service by creating
-// a new instance of our class
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use('animals', new Animals());
-
-// Set up an error handler that gives us nicer errors
 app.use(express.errorHandler());
 
-// Start the server on port 3030
 const server = app.listen(3030);
 
-// Use the service to create a new message on the server
-app.service('animals').create({
-  text: 'Hello ANIMALS from the server'
-});
-
-server.on('listening', () => console.log('Feathers REST API started at http://localhost:3030'));
+server.on('listening', () => console.log('Adopteitor Server started at http://localhost:3030'));
