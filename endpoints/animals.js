@@ -10,32 +10,29 @@ class Animals {
   }
 
   async get(id, params) {
-    console.log("[GET METHOD]");
-    console.log("id", id);
-    console.log("params", params);
-    console.log("[GET METHOD]");
-    // Find the animal by id
     const animal = this.animals.find(animal => animal.id === parseInt(id, 10));
-
     // Throw an error if it wasn't found
     if(!animal) {
       throw new Error(`animal with id ${id} not found`);
     }
-
     // Otherwise return the animal
     return animal;
   }
 
+
   async create(data, params) {
-    // Create a new object with the original data and an id
-    // taken from the incrementing `currentId` counter
-    const animal = Object.assign({
-      id: ++this.currentId
-    }, data);
-
+    const Model = require('../models/animal');
+    let Animaldata = {
+      id: "id",
+      stage: "meme",
+      name: "name",
+      birthday: "birthday",
+      description: "description",
+      ingress_date: "ingress_date"
+    };
+    const animal = new Model(Animaldata);
     this.animals.push(animal);
-
-    return animal;
+    return this.animal;
   }
 
   async patch(id, data, params) {
